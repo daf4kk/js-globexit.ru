@@ -18,7 +18,7 @@ export const fetchUsers = async(sortby) => {
             users = [...data]   
         })
     }
-
+    const DOMUsersList = document.querySelector('.users-list');
     users.forEach((user) => {
         const userBlock = 
             `<div class="user">
@@ -34,7 +34,7 @@ export const fetchUsers = async(sortby) => {
                 </div>
             </div>
         </div>`
-        const DOMUsersList = document.querySelector('.users-list');
+        
         DOMUsersList.innerHTML += userBlock;
     })
     updatePopUpListener();
