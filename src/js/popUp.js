@@ -1,5 +1,5 @@
 
-import { fetchUsers, updateInputListener } from "./fetchUsers.js";
+import { fetchUsers, updateInputListener, updatePopUpListener } from "./fetchUsers.js";
 function closePopUp(){
 
     const popUpWrapper = document.querySelector('.popup-wrapper')
@@ -67,11 +67,6 @@ export const createPopUp = async (userName) => {
     const body = document.querySelector('body')
     body.style.overflow = 'hidden';
     closePopUp();
-    const updatedUsers = document.querySelectorAll('.users-list .user')
-    updatedUsers.forEach((user) => {
-        const name = user.querySelector('.name').innerHTML
-        user.addEventListener('click', () => {
-            createPopUp(name)
-        })
-    })
+    updatePopUpListener();
+
 }

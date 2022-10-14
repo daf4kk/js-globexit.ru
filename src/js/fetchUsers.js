@@ -37,18 +37,22 @@ export const fetchUsers = async(sortby) => {
         const DOMUsersList = document.querySelector('.users-list');
         DOMUsersList.innerHTML += userBlock;
     })
+    updatePopUpListener();
+}
+export const updateInputListener = () => {
+    const input = document.querySelector('input');
+    input.addEventListener('input', (e) => {
+        fetchUsers(e.target.value)
+    })
+}
+
+export const updatePopUpListener = () => {
     const updatedUsers = document.querySelectorAll('.users-list .user')
     updatedUsers.forEach((user) => {
         const name = user.querySelector('.name').innerHTML
         user.addEventListener('click', () => {
             createPopUp(name)
         })
-    })
-}
-export const updateInputListener = () => {
-    const input = document.querySelector('input');
-    input.addEventListener('input', (e) => {
-        fetchUsers(e.target.value)
     })
 }
 fetchUsers()
