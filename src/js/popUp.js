@@ -1,5 +1,3 @@
-
-import { fetchUsers, updateInputListener, updatePopUpListener } from "./fetchUsers.js";
 function closePopUp(){
 
     const popUpWrapper = document.querySelector('.popup-wrapper')
@@ -16,13 +14,8 @@ function closePopUp(){
         popUpWrapper.remove();
         body.style.overflow = 'auto';
     })
-    updateInputListener()
 }
 export const createPopUp = async (userName) => {
-    const input = document.querySelector('input');
-    if (input.value.length !== 0){  //Переводим пользователя на "начальную страницу" со списком всех пользователей если он на данный момент не находится на ней
-        fetchUsers()
-    }
     let user;
     await fetch(`http://127.0.0.1:3000/?term=${userName}`)
         .then(response => response.json())
@@ -63,10 +56,8 @@ export const createPopUp = async (userName) => {
     </div>
     `;
 
-    document.body.innerHTML += popUp;
+    document.body.insertAdjacentHTML('afterbegin', popUp)
     const body = document.querySelector('body')
     body.style.overflow = 'hidden';
     closePopUp();
-    updatePopUpListener();
-
 }

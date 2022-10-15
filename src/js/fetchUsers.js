@@ -34,19 +34,19 @@ export const fetchUsers = async(sortby) => {
                 </div>
             </div>
         </div>`
-        
-        DOMUsersList.innerHTML += userBlock;
+
+        DOMUsersList.insertAdjacentHTML('afterbegin',userBlock)
     })
-    updatePopUpListener();
+    addPopUpListener();
 }
-export const updateInputListener = () => {
+export const addInputListener = () => {
     const input = document.querySelector('input');
     input.addEventListener('input', (e) => {
         fetchUsers(e.target.value)
     })
 }
 
-export const updatePopUpListener = () => {
+export const addPopUpListener = () => {
     const updatedUsers = document.querySelectorAll('.users-list .user')
     updatedUsers.forEach((user) => {
         const name = user.querySelector('.name').innerHTML
@@ -56,4 +56,4 @@ export const updatePopUpListener = () => {
     })
 }
 fetchUsers()
-updateInputListener()
+addInputListener()
